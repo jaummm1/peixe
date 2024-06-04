@@ -7,14 +7,15 @@
     margin: 0 auto;
     padding: 20px;
     margin-top: 6rem;
-    border: 1px solid #757373;
+    border: 1px solid white;
     border-radius: 5px;
-    background-color: #585656;
+    background-color: white;
   }
   .titulo{
     align-items: center;
     display: flex;
     margin-left: 19rem;
+    color: black
   }
   
   /* Alinhe os itens verticalmente */

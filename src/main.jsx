@@ -8,8 +8,10 @@ import Login from './pages/login/Login.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <CustomProvider theme="dark">
+    <div className='fundo'>
+    <CustomProvider >
     <App />
     </CustomProvider>
+    </div>
   </React.StrictMode>,
 )

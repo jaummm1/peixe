@@ -28,15 +28,16 @@ const Login = () => {
 
   return (
     <div className="login-container">
-      <h4 style={{marginLeft:"23rem"}}>Login</h4>
+      <h4 className="titulo" style={{marginLeft:"20rem"}}>FAÇA SEU LOGIN</h4>
       <Form>
         <FlexboxGrid>
           <FlexboxGrid.Item colspan={24}>
             <Form.Group>
-              <Form.ControlLabel>Email</Form.ControlLabel>
+              <Form.ControlLabel className="label">Email</Form.ControlLabel>
               <Form.Control
                 name="email"
                 type="email"
+                placeholder="Digite seu E-Mail"
                 value={email}
                 onChange={(value) => setEmail(value)}
               />
@@ -46,10 +47,11 @@ const Login = () => {
         <FlexboxGrid style={{ marginTop: "1rem" }}>
           <FlexboxGrid.Item colspan={24}>
             <Form.Group>
-              <Form.ControlLabel>Senha</Form.ControlLabel>
+              <Form.ControlLabel className="label">Senha</Form.ControlLabel>
               <div className="input-with-icon">
                 <Form.Control
                   name="password"
+                  placeholder="Digite sua Senha"
                   type={showPassword ? "text" : "password"}
                   value={password}
                   onChange={(value) => setPassword(value)}
@@ -64,13 +66,14 @@ const Login = () => {
             </Form.Group>
           </FlexboxGrid.Item>
         </FlexboxGrid>
-        <FlexboxGrid justify="center">
-          <Link to="/cadastro">Cadastrar Usuário</Link>
-        </FlexboxGrid>
+       
         <FlexboxGrid style={{ marginTop: "1rem" }}>
-          <Button appearance="primary" onClick={handleLogin}>
+          <Button appearance="primary" color="blue" onClick={handleLogin}>
             ENTRAR
           </Button>
+        </FlexboxGrid>
+        <FlexboxGrid justify="center" style={{ marginTop: "1rem" }}>
+          <Link to="/cadastro">Não Tenho Conta</Link>
         </FlexboxGrid>
       </Form>
     </div>
