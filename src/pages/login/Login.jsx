@@ -5,13 +5,13 @@ import { Form, Button, FlexboxGrid } from "rsuite";
 import "./Login.css";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import HeaderLogin from "./Header";
 
-
-const Login = () => {
-
+const Login = ({ listEmail, setListEmail }) => {
   const history = useNavigate();
   const [email, setEmail] = useState("");
+
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
@@ -20,16 +20,34 @@ const Login = () => {
   };
 
   const handleLogin = () => {
-    // console.log("Email:", email);
-    // console.log("Password:", password);
-
-    history('/home');
+    listEmail.map((item) => {
+      let emailString = email.toString();
+      let senhaInt = parseInt(password);
+      if (emailString === item.email && senhaInt === item.senha) {
+        swal({
+          title: "SUCESSO!",
+          text: `Seja Bem Vindo! ${email}`,
+          icon: "success",
+        });
+        return history("/home");
+      }
+        return swal({
+            title: "ERRO!",
+            text: "Usuário ou senha incorretos. Por favor, verifique suas credenciais e tente novamente.",
+            icon: "error",
+          });;
+    
+    });
   };
 
   return (
-    <div className="login-container">
-      <h4 className="titulo" style={{marginLeft:"20rem"}}>FAÇA SEU LOGIN</h4>
-      <Form>
+    <Form>
+      <HeaderLogin />
+      <div className="login-container">
+        <h4 className="titulo" style={{ marginLeft: "20rem" }}>
+          FAÇA SEU LOGIN
+        </h4>
+
         <FlexboxGrid>
           <FlexboxGrid.Item colspan={24}>
             <Form.Group>
@@ -66,7 +84,7 @@ const Login = () => {
             </Form.Group>
           </FlexboxGrid.Item>
         </FlexboxGrid>
-       
+
         <FlexboxGrid style={{ marginTop: "1rem" }}>
           <Button appearance="primary" color="blue" onClick={handleLogin}>
             ENTRAR
@@ -75,8 +93,8 @@ const Login = () => {
         <FlexboxGrid justify="center" style={{ marginTop: "1rem" }}>
           <Link to="/cadastro">Não Tenho Conta</Link>
         </FlexboxGrid>
-      </Form>
-    </div>
+      </div>
+    </Form>
   );
 };
 

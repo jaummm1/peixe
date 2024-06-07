@@ -7,7 +7,7 @@ const CardItem = ({ listCard }) => {
   const [selectedCard, setSelectedCard] = useState(null);
 
   const handleOpen = (card) => {
-    console.log('caiuiuuu')
+  
     setSelectedCard(card);
     setOpen(true);
   };
@@ -26,7 +26,7 @@ const CardItem = ({ listCard }) => {
               handleOpen(e);
             }}
           >
-            <img src={e.link} alt={e.nome} className="card-image" />
+            <img src={e.link} alt={e.nome}  className="card-image" />
             <div className="card-content">
               <h3 className="card-title">Nome: {e.nome}</h3>
               <p className="card-description">Espécie: {e.especie}</p>
