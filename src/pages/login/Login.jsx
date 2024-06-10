@@ -20,26 +20,19 @@ const Login = ({ listEmail, setListEmail }) => {
   };
 
   const handleLogin = () => {
-    listEmail.map((item) => {
-      let emailString = email.toString();
-      let senhaInt = parseInt(password);
-      if (emailString === item.email && senhaInt === item.senha) {
-        swal({
-          title: "SUCESSO!",
-          text: `Seja Bem Vindo! ${email}`,
-          icon: "success",
-        });
-        return history("/home");
-      }else{
-        return swal({
-          title: "ERRO!",
-          text: "Usuário ou senha incorretos. Por favor, verifique suas credenciais e tente novamente.",
-          icon: "error",
-        });;
-    
-      }
-      
-    });
+
+    const hasEmail = listEmail.includes(email)
+    const hasPassword = listEmail.includes(password)
+
+    if(hasEmail && hasPassword){
+      history('/home')
+    }else{
+       swal({
+        title: "ERRO!",
+        text: "Usuário ou senha incorretos. Por favor, verifique suas credenciais e tente novamente.",
+        icon: "error",
+      });;
+    }
    
   };
 
