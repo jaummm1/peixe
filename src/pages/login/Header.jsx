@@ -19,14 +19,6 @@ const HeaderLogin = () => {
           <GiCirclingFish size={30} />
         </FlexboxGrid.Item>
       </FlexboxGrid>
-      <nav className="nav">
-        <ul className="nav-list">
-          <li className="nav-item" style={{ outline: 'none' }}>
-            <a href="#contact">Sobre</a>
-          </li>
-         
-        </ul>
-      </nav>
     </header>
   );
 };

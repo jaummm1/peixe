@@ -31,13 +31,14 @@ const Login = ({ listEmail, setListEmail }) => {
         });
         return history("/home");
       }
-        return swal({
-            title: "ERRO!",
-            text: "Usuário ou senha incorretos. Por favor, verifique suas credenciais e tente novamente.",
-            icon: "error",
-          });;
-    
+      
     });
+    return swal({
+      title: "ERRO!",
+      text: "Usuário ou senha incorretos. Por favor, verifique suas credenciais e tente novamente.",
+      icon: "error",
+    });;
+
   };
 
   return (
