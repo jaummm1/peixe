@@ -21,8 +21,8 @@ const Login = ({ listEmail, setListEmail }) => {
 
   const handleLogin = () => {
 
-    const hasEmail = listEmail.includes(email.toString())
-    const hasPassword = listEmail.includes(password.toString())
+    const hasEmail = listEmail.some((i) => i.email === email.toString())
+    const hasPassword = listEmail.some((i) => i.senha === password.toString())
 
     if(hasEmail && hasPassword){
       history('/home')
