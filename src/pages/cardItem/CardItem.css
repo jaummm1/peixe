@@ -10,6 +10,7 @@
     height: 380px;
     width: 300px;
     margin: 16px;
+    cursor: pointer;
   }
   
   .card-image {
