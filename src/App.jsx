@@ -90,9 +90,9 @@ const App = () => {
   ]);
 
   const [listEmail, setListEmail] = useState([
-    { id: 1, email: "joao@gmail.com", senha: 1234 },
-    { id: 2, email: "ian@gmail.com" , senha: 1234},
-    { id: 3, email: "brenda@gmail.com",  senha: 1234 },
+    { id: 1, email: "joao@gmail.com", senha: "1234" },
+    { id: 2, email: "ian@gmail.com" , senha: "1234"},
+    { id: 3, email: "brenda@gmail.com",  senha: "1234" },
   ]);
   return (
     <Router>
