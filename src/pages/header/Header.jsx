@@ -1,7 +1,7 @@
 import React from "react";
 import "./Header.css";
 import { GiExitDoor, GiCirclingFish } from "react-icons/gi";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { FlexboxGrid } from "rsuite";
 
 const HeaderCard = () => {
@@ -22,14 +22,10 @@ const HeaderCard = () => {
       <nav className="nav">
         <ul className="nav-list">
           <li className="nav-item" style={{ outline: 'none' }}>
-            <a href="/home">Home</a>
+            <Link to="/home">Home</Link>
           </li>
           <li className="nav-item" style={{ outline: 'none' }}>
-            <a href="/cadastro-peixe">Cadastrar Meus Peixes</a>
-          </li>
-     
-          <li className="nav-item" style={{ outline: 'none' }}>
-            <a href="#contact">Sobre</a>
+            <Link to="/cadastro-peixe">Cadastrar Meus Peixes</Link>
           </li>
           <div
             onClick={() => {
