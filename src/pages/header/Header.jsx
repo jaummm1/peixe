@@ -22,10 +22,10 @@ const HeaderCard = () => {
       <nav className="nav">
         <ul className="nav-list">
           <li className="nav-item" style={{ outline: 'none' }}>
-            <Link to="/home">Home</Link>
+            <Link to="/home" style={{textDecoration: 'none'}}>Home</Link>
           </li>
           <li className="nav-item" style={{ outline: 'none' }}>
-            <Link to="/cadastro-peixe">Cadastrar Meus Peixes</Link>
+            <Link to="/cadastro-peixe" style={{textDecoration: 'none'}}>Cadastrar Meus Peixes</Link>
           </li>
           <div
             onClick={() => {
