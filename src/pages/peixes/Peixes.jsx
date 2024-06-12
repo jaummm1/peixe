@@ -12,17 +12,15 @@ const Peixes = ({listCard}) => {
   const [alimentacao, setAlimentacao] = useState("");
   const [quantidade, setQuantidade] = useState("");
   const [imagem, setImagem] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
+  
 
   const handleSave = () => {
     const obj = {
       Especie: especie,
       Nome: nome,
       Tempo_alimentacao: tempoAlimentacao,
+      Quantidade: quantidade,
       Alimentacao: alimentacao,
       Imagem: imagem ? imagem : "https://i0.wp.com/carbonozero.net/wp-content/uploads/2022/06/lula-gigante-mitologia.jpg?fit=1920%2C1080&ssl=1",
     };
