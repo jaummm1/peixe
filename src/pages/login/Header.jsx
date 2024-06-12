@@ -1,11 +1,9 @@
 import React from "react";
 import { GiCirclingFish } from "react-icons/gi";
-import { useNavigate } from "react-router-dom";
 import { FlexboxGrid } from "rsuite";
 import "./Header.css";
 
 const HeaderLogin = () => {
-  const history = useNavigate();
   return (
     <header className="header">
       <FlexboxGrid align="middle">

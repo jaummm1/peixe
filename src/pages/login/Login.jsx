@@ -1,5 +1,3 @@
-// src/components/Login.js
-
 import React, { useState } from "react";
 import { Form, Button, FlexboxGrid } from "rsuite";
 import "./Login.css";
@@ -9,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import HeaderLogin from "./Header";
 import axios from "axios";
 
-const Login = ({ listEmail, setListEmail }) => {
+const Login = () => {
   const history = useNavigate();
   const [email, setEmail] = useState("");
 
@@ -33,23 +31,22 @@ const Login = ({ listEmail, setListEmail }) => {
       data: obj,
     })
       .then((res) => {
-        if(res.data.message === "Login bem-sucedido"){ 
-        swal({
-          title: "SUCESSO!",
-          text: "Usuário Cadastrado com Sucesso!",
-          icon: "success",
-        });
-        sessionStorage.setItem('idUsuario', res.data.userId);
-        history("/home");
-  }
-
-else{
-  swal({
-    title: "ERRO!",
-    text: "Usuário ou senha incorretos. Por favor, verifique suas credenciais e tente novamente.",
-    icon: "error",
-  });
-}})
+        if (res.data.message === "Login bem-sucedido") {
+          swal({
+            title: "SUCESSO!",
+            text: "Usuário Cadastrado com Sucesso!",
+            icon: "success",
+          });
+          sessionStorage.setItem("idUsuario", res.data.userId);
+          history("/home");
+        } else {
+          swal({
+            title: "ERRO!",
+            text: "Usuário ou senha incorretos. Por favor, verifique suas credenciais e tente novamente.",
+            icon: "error",
+          });
+        }
+      })
 
       .catch((erro) => {
         swal({
@@ -58,7 +55,6 @@ else{
           icon: "error",
         });
       });
-
   }
 
   return (

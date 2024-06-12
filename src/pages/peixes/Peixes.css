@@ -3,9 +3,9 @@
 /* Estilize o container do formulário */
 .login-container {
     max-width: 800px;
-    max-height: 800px;
+    max-height: 780px;
     margin: 0 auto;
-    margin-top: 2rem;
+    margin-top: 0.6rem !important;
     padding: 20px;
     border: 1px solid #E3E0EA;
     border-radius: 5px;
