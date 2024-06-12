@@ -13,8 +13,6 @@ const Peixes = ({listCard}) => {
   const [quantidade, setQuantidade] = useState("");
   const [imagem, setImagem] = useState("");
 
-  
-
   const handleSave = () => {
     const obj = {
       Especie: especie,
