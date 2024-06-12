@@ -7,6 +7,7 @@ import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import HeaderLogin from "./Header";
+import axios from "axios";
 
 const Login = ({ listEmail, setListEmail }) => {
   const history = useNavigate();
@@ -19,22 +20,46 @@ const Login = ({ listEmail, setListEmail }) => {
     setShowPassword(!showPassword);
   };
 
-  const handleLogin = () => {
+  async function handleLogin() {
+    const obj = { email: email.toString(), password: password.toString() };
 
-    const hasEmail = listEmail.some((i) => i.email === email.toString())
-    const hasPassword = listEmail.some((i) => i.senha === password.toString())
+    await axios({
+      method: "post",
+      url: "https://api-peixes-cxxg.vercel.app/api/users/login",
+      headers: {
+        accept: "*/*",
+        "Content-Type": "application/json",
+      },
+      data: obj,
+    })
+      .then((res) => {
+        if(res.data.message === "Login bem-sucedido"){ 
+        swal({
+          title: "SUCESSO!",
+          text: "Usuário Cadastrado com Sucesso!",
+          icon: "success",
+        });
+        sessionStorage.setItem('idUsuario', res.data.userId);
+        history("/home");
+  }
 
-    if(hasEmail && hasPassword){
-      history('/home')
-    }else{
-       swal({
-        title: "ERRO!",
-        text: "Usuário ou senha incorretos. Por favor, verifique suas credenciais e tente novamente.",
-        icon: "error",
-      });;
-    }
-   
-  };
+else{
+  swal({
+    title: "ERRO!",
+    text: "Usuário ou senha incorretos. Por favor, verifique suas credenciais e tente novamente.",
+    icon: "error",
+  });
+}})
+
+      .catch((erro) => {
+        swal({
+          title: "ERRO!",
+          text: "Usuário ou senha incorretos. Por favor, verifique suas credenciais e tente novamente.",
+          icon: "error",
+        });
+      });
+
+  }
 
   return (
     <Form>

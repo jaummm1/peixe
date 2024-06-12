@@ -3,10 +3,8 @@
 import React, { useState } from "react";
 import { Form, Button, FlexboxGrid } from "rsuite";
 import "./Peixes.css";
-import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import HeaderCard from "../header/Header";
+import HeaderCadastro from "./Header";
 
 const Peixes = ({listCard}) => {
   const history = useNavigate();
@@ -41,12 +39,12 @@ const Peixes = ({listCard}) => {
 
   return (
     <Form>
-      <HeaderCard />
+      <HeaderCadastro />
       <div className="login-container">
-        <h4 className="titulo" style={{ marginLeft: "20rem" }}>
+        <h4 className="titulo" style={{ marginLeft: "18rem" }}>
           CADASTRO DE PEIXES
         </h4>
-
+      
         <FlexboxGrid justify="start" style={{ marginTop: "2rem" }}>
           <FlexboxGrid.Item colspan={24}>
             <Form.Group>

@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./pages/login/Login";
 import Cadastro from "./pages/cadastroUsuario/CadastroUsuario";
 import Card from "./pages/cardItem/CardItens";
 import Peixes from "./pages/peixes/Peixes";
+import axios from "axios";
+import Dashboard from "./pages/dashboard/Dashboard";
 
 const App = () => {
   const [listCard, setListPeixes] = useState([
@@ -91,15 +93,44 @@ const App = () => {
 
   const [listEmail, setListEmail] = useState([
     { id: 1, email: "joao@gmail.com", senha: "1234" },
-    { id: 2, email: "ian@gmail.com" , senha: "1234"},
-    { id: 3, email: "brenda@gmail.com",  senha: "1234" },
+    { id: 2, email: "ian@gmail.com", senha: "1234" },
+    { id: 3, email: "brenda@gmail.com", senha: "1234" },
   ]);
+
+  useEffect(() => {
+    get();
+  }, []);
+
+  async function get() {
+    try {
+      const apiUrl = "https://api-peixes-cxxg.vercel.app/api/users/";
+      const response = await axios.get(apiUrl, {
+        headers: {
+          Accept: "*/*",
+          "User-Agent": "Thunder Client (https://www.thunderclient.com)",
+        },
+      });
+    } catch (error) {}
+  }
+
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Login listEmail={listEmail} setListEmail={setListEmail}/>} />
-        <Route path="/cadastro" element={<Cadastro listEmail={listEmail} setListEmail={setListEmail}/>} />
-        <Route path="/home" element={<Card listCard={listCard} />} />
+        <Route
+          path="/"
+          element={<Login listEmail={listEmail} setListEmail={setListEmail} />}
+        />
+        <Route
+          path="/cadastro"
+          element={
+            <Cadastro listEmail={listEmail} setListEmail={setListEmail} />
+          }
+        />
+        <Route
+          path="/home"
+          element={<Card listCard={listCard} setListPeixes={setListPeixes} />}
+        />
+        <Route path="/dash" element={<Dashboard />} />
         <Route
           path="/cadastro-peixe"
           element={<Peixes listCard={listCard} setListPeixes={setListPeixes} />}

@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import { Form, Button, FlexboxGrid } from "rsuite";
-import "./Cadastro.css"; 
+import "./Cadastro.css";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import HeaderLogin from "../login/Header";
+import axios from "axios";
 
-const Cadastro = ({ listEmail }) => {
+const Cadastro = () => {
   const history = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
-  const [dataNascimento, setDataNascimento] = useState("");
   const [nome, setNome] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showPassword2, setShowPassword2] = useState(false);
@@ -23,7 +23,7 @@ const Cadastro = ({ listEmail }) => {
     setShowPassword2(!showPassword2);
   };
 
-  const handleCadastro = () => {
+  async function handleCadastro() {
     if (password !== password2) {
       swal({
         title: "ERRO!",
@@ -31,16 +31,35 @@ const Cadastro = ({ listEmail }) => {
         icon: "error",
       });
     } else {
-      swal({
-        title: "SUCESSO!",
-        text: "Usuário Cadastrado com Sucesso!",
-        icon: "success",
-      });
-      const obj = { id: 1000, email: email, senha: password2 };
-      listEmail.push(obj);
-      history("/");
+     
+      const obj = {
+        name: nome,
+        email: email,
+        password: password2,
+      };
+
+      await axios({
+        method: "post",
+        url: "https://api-peixes-cxxg.vercel.app/api/users/",
+        headers: {
+          accept: "*/*",
+          "Content-Type": "application/json",
+        },
+        data: obj,
+      })
+        .then((res) => {
+          swal({
+            title: "SUCESSO!",
+            text: "Usuário Cadastrado com Sucesso!",
+            icon: "success",
+          });
+          history("/");
+        })
+        .catch((erro) => {
+          console.error(`Erro: ${erro}`);
+        });
     }
-  };
+  }
 
   return (
     <Form>

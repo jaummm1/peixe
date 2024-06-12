@@ -4,7 +4,7 @@ import { GiExitDoor, GiCirclingFish } from "react-icons/gi";
 import { useNavigate, Link } from "react-router-dom";
 import { FlexboxGrid } from "rsuite";
 
-const HeaderCard = () => {
+const HeaderCadastro = () => {
   const history = useNavigate();
   return (
     <header className="header">
@@ -12,11 +12,11 @@ const HeaderCard = () => {
       <FlexboxGrid.Item colspan={3}>
           <GiCirclingFish style={{ marginTop: "0.1rem", }} size={30} />
         </FlexboxGrid.Item>
-        <FlexboxGrid.Item colspan={17} style={{marginLeft: "0.3rem"}}>
+        <FlexboxGrid.Item colspan={16} style={{marginLeft: "12px"}}>
           Fish-Care
         </FlexboxGrid.Item>
         <FlexboxGrid.Item colspan={3}>
-          <GiCirclingFish style={{marginLeft: "-0.3rem", marginTop: "0.1rem" }} size={30} />
+          <GiCirclingFish style={{marginLeft: "-10px", marginTop: "0.1rem" }} size={30} />
         </FlexboxGrid.Item>
       </FlexboxGrid>
       <nav className="nav">
@@ -47,4 +47,4 @@ const HeaderCard = () => {
   );
 };
 
-export default HeaderCard;
+export default HeaderCadastro;
