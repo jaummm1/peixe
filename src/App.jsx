@@ -103,13 +103,15 @@ const App = () => {
 
   async function get() {
     try {
-      const apiUrl = "https://api-peixes-cxxg.vercel.app/api/users/";
+      const apiUrl = "https://api-peixes.vercel.app/api/users/";
       const response = await axios.get(apiUrl, {
         headers: {
           Accept: "*/*",
           "User-Agent": "Thunder Client (https://www.thunderclient.com)",
         },
+      
       });
+      console.log(response)
     } catch (error) {}
   }
 
